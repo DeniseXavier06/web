@@ -7,14 +7,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.xavier.web.domain.Categoria;
 import com.xavier.web.domain.Playlist;
+import com.xavier.web.repositeries.CategoriaRepositoy;
 import com.xavier.web.repositeries.PlaylistRepositoy;
 
 @SpringBootApplication
 public class WebApplication implements CommandLineRunner {
 
 	@Autowired
-	private PlaylistRepositoy playlistRepositoy;
+
+	private CategoriaRepositoy categoriaRepositoy;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(WebApplication.class, args);
@@ -24,11 +27,11 @@ public class WebApplication implements CommandLineRunner {
 	//permite executar algumas acoes
 	@Override
 	public void run(String... args) throws Exception {
-		Playlist play1 = new Playlist(null, "Denise - 2022", "Curados para curar!");
-		Playlist play2 = new Playlist(null, "Cleopse -2022", "Rock!");
+		Categoria cat1 = new Categoria(null, "Negócios");
+		Categoria cat2 = new Categoria(null, "Cores");
 		
 		//quem acessa os dados é o repository
-		playlistRepositoy.saveAll(Arrays.asList(play1, play2));
+		categoriaRepositoy.saveAll(Arrays.asList(cat1,cat2));
 		
 	}
 	
